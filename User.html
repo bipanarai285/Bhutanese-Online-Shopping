@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #40607c; /* Light background color */
+            background-image: url('your-background-image.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        header {
+            background-color: rgba(64, 153, 143, 0.8);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            background-color: rgba(201, 96, 96, 0.8); /* White background with opacity */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .profile-info label {
+            font-weight: bold;
+        }
+        .profile-info input, .profile-info select, .profile-info textarea {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 100%;
+        }
+        .btn-save {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-save:hover {
+            background-color: #0056b3;
+        }
+        .btn-back {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-back:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+
+    <div class="container">
+        <h2>Profile Information</h2>
+        <div class="profile-info">
+            <label for="username">Username</label>
+            <input type="text" id="username" value="john_doe123" disabled>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" value="john@example.com">
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" value="+97512345678">
+
+            <label for="address">Shipping Address</label>
+            <textarea id="address" rows="4">Thimphu, Bhutan</textarea>
+
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="male" selected>Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="birthdate">Date of Birth</label>
+            <input type="date" id="birthdate" value="1990-05-15">
+        </div>
+
+        <a href="#" class="btn-save">Save Changes</a>
+        <a href="catalog.html" class="btn-back">Back to Catalog</a>
+    </div>
+</body>
+</html>

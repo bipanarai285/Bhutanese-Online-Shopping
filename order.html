@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1d656e; /* Light cyan background */
+            background-image: url(''); /* Background image */
+            background-size: fill; /* Ensures the image covers the entire screen */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Ensures the image doesn't repeat */
+        }
+        header {
+            background-color: rgba(0, 121, 107, 0.7); /* Dark teal with transparency */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: rgba(151, 65, 65, 0.9); /* White background with slight transparency */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff; /* Blue header background */
+            color: white;
+        }
+        .order-details {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .order-details h3 {
+            margin-top: 0;
+        }
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Order History</h1>
+    </header>
+
+    <div class="container">
+        <h2>Your Orders</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#001</td>
+                    <td>2025-01-03</td>
+                    <td>$320.00</td>
+                    <td>Shipped</td>
+                    <td><a href="#" class="btn-back" onclick="viewOrderDetails(1)">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>#002</td>
+                    <td>2025-01-02</td>
+                    <td>$200.00</td>
+                    <td>Delivered</td>
+                    <td><a href="#" class="btn-back" onclick="viewOrderDetails(2)">View Details</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="order-details" id="order-details" style="display: none;">
+        <h3>Order Details</h3>
+        <p id="order-id">Order ID: </p>
+        <p id="order-date">Date: </p>
+        <p id="order-status">Status: </p>
+        <h4>Items:</h4>
+        <ul id="order-items">
+            <!-- Items will be dynamically added here -->
+        </ul>
+        <p id="order-total">Total: </p>
+        <a href="#" class="btn-back" onclick="goBack()">Back to Orders</a>
+    </div>
+
+    <script>
+        function viewOrderDetails(orderId) {
+            // Example data for orders (In practice, you would fetch this from the backend)
+            const orders = [
+                {
+                    id: 1,
+                    date: '2025-01-03',
+                    status: 'Shipped',
+                    items: [
+                        { product: 'Kira', quantity: 1, price: 120.00 },
+                        { product: 'Gho', quantity: 2, price: 100.00 }
+                    ],
+                    total: 320.00
+                },
+                {
+                    id: 2,
+                    date: '2025-01-02',
+                    status: 'Delivered',
+                    items: [
+                        { product: 'Kira', quantity: 2, price: 120.00 }
+                    ],
+                    total: 240.00
+                }
+            ];
+
+            // Find the order by its ID
+            const order = orders.find(o => o.id === orderId);
+
+            // Populate the order details
+            document.getElementById('order-id').textContent = 'Order ID: ' + order.id;
+            document.getElementById('order-date').textContent = 'Date: ' + order.date;
+            document.getElementById('order-status').textContent = 'Status: ' + order.status;
+
+            const itemsList = document.getElementById('order-items');
+            itemsList.innerHTML = ''; // Clear existing items
+
+            order.items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.product} - Quantity: ${item.quantity} - Price: $${item.price.toFixed(2)}`;
+                itemsList.appendChild(li);
+            });
+
+            document.getElementById('order-total').textContent = 'Total: $' + order.total.toFixed(2);
+
+            // Show the order details section
+            document.getElementById('order-details').style.display = 'block';
+
+            // Hide the orders list
+            document.querySelector('.container').style.display = 'none';
+        }
+
+        function goBack() {
+            // Hide the order details
+            document.getElementById('order-details').style.display = 'none';
+
+            // Show the orders list again
+            document.querySelector('.container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
