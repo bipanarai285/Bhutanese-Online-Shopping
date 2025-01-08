@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .cart-table th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-danger {
+            background-color: #e91e63;
+        }
+
+        .btn-danger:hover {
+            background-color: #c2185b;
+        }
+
+        .btn-success {
+            background-color: #4CAF50;
+        }
+
+        .btn-success:hover {
+            background-color: #45a049;
+        }
+
+        .add-product {
+            margin-bottom: 20px;
+        }
+
+        .add-product input {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .add-product .btn-add {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .add-product .btn-add:hover {
+            background-color: #218838;
+        }
+
+        .action-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        // Function to add a new product to the cart
+        function addProduct() {
+            const productName = document.getElementById('product-name').value;
+            const productPrice = document.getElementById('product-price').value;
+
+            if (productName && productPrice) {
+                const table = document.querySelector('.cart-table tbody');
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${productName}</td>
+                    <td>Nu. ${parseFloat(productPrice).toFixed(2)}</td>
+                    <td><input type="number" value="1" min="1" style="width: 60px;" onchange="updateSubtotal(this)"></td>
+                    <td>Nu. ${parseFloat(productPrice).toFixed(2)}</td>
+                    <td><button class="btn btn-danger" onclick="removeProduct(this)">Remove</button></td>
+                `;
+
+                table.appendChild(row);
+                updateTotal();
+            }
+        }
+
+        // Function to remove a product from the cart
+        function removeProduct(button) {
+            button.parentElement.parentElement.remove();
+            updateTotal();
+        }
+
+        // Function to update the subtotal when quantity changes
+        function updateSubtotal(input) {
+            const row = input.parentElement.parentElement;
+            const price = parseFloat(row.children[1].textContent.replace('Nu. ', ''));
+            const quantity = parseInt(input.value);
+            const subtotal = row.children[3];
+            subtotal.textContent = `Nu. ${(price * quantity).toFixed(2)}`;
+            updateTotal();
+        }
+
+        // Function to update the total
+        function updateTotal() {
+            const rows = document.querySelectorAll('.cart-table tbody tr');
+            let total = 0;
+
+            rows.forEach(row => {
+                const subtotal = parseFloat(row.children[3].textContent.replace('Nu. ', ''));
+                total += subtotal;
+            });
+
+            document.querySelector('.total strong').textContent = `Nu. ${total.toFixed(2)}`;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div class="add-product">
+            <input type="text" id="product-name" placeholder="Product Name">
+            <input type="number" id="product-price" placeholder="Price (Nu.)" min="0" step="0.01">
+            <button class="btn btn-add" onclick="addProduct()">Add Product</button>
+        </div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Default example rows -->
+                <tr>
+                    <td>Kira</td>
+                    <td>Nu. 120.00</td>
+                    <td><input type="number" value="1" min="1" style="width: 60px;" onchange="updateSubtotal(this)"></td>
+                    <td>Nu. 120.00</td>
+                    <td><button class="btn btn-danger" onclick="removeProduct(this)">Remove</button></td>
+                </tr>
+                <tr>
+                    <td>Gho</td>
+                    <td>Nu. 150.00</td>
+                    <td><input type="number" value="1" min="1" style="width: 60px;" onchange="updateSubtotal(this)"></td>
+                    <td>Nu. 150.00</td>
+                    <td><button class="btn btn-danger" onclick="removeProduct(this)">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="total">Total: <strong>Nu. 270.00</strong></p>
+        <div class="action-buttons">
+            <a href="catalog.html" class="btn">Continue Shopping</a>
+            <a href="place.order.html" class="btn btn-success">Place Order</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -3,70 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('your-background-image.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 50px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .product-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .details {
-            margin-top: 20px;
-        }
-        .details h2 {
-            margin: 0;
-            color: #333;
-        }
-        .details p {
-            color: #555;
-        }
-        .price {
-            color: #e91e63;
-            font-weight: bold;
-            font-size: 1.5em;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>Product Details - Bhutanese Online Shopping</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/product-details.css">
 </head>
 <body>
-    <div class="container">
-        <img src="your-product-image.jpg" alt="Product Image" class="product-image">
-        <div class="details">
-            <h2>Product Name</h2>
-            <p>Category: Kira</p>
-            <p>Description: A beautifully handwoven traditional Bhutanese kira made from fine silk and cotton.</p>
-            <p class="price">$120.00</p>
-            <a href="cart.html" class="button">Add to Cart</a>
-            <a href="catalog.html" class="button">Back to Catalog</a>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Product Catalog</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="product-detail">
+        <!-- Product 1: Kira -->
+        <div class="product-item">
+            <div class="product-images">
+                <img src="images\kira.1.jpg" alt="Kira Image" class="product-image">
+            </div>
+            <div class="product-info">
+                <h1>Kira (Women’s Traditional Dress)</h1>
+                <p class="description">Authentic Bhutanese Kira, traditionally worn by Bhutanese women. Made from luxurious silk, cotton, and wool. Available in various colors and designs.</p>
+                <h2>Customizations Available</h2>
+                <ul>
+                    <li><strong>Size:</strong> XS, S, M, L, XL</li>
+                    <li><strong>Fabric Type:</strong> Silk, Cotton, Wool</li>
+                    <li><strong>Colors:</strong> Maroon, Green, Blue, Yellow</li>
+                    <li><strong>Embroidery/Design:</strong> Traditional Bhutanese motifs</li>
+                </ul>
+                <h2>Price: BTN 5000 - BTN 12000</h2>
+                <h2>Availability: In Stock</h2>
+                <h3>Quantity:</h3>
+                <input type="number" id="quantity-kira" min="1" value="1">
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
         </div>
-    </div>
+
+        <!-- Product 2: Gho -->
+        <div class="product-item">
+            <div class="product-images">
+                <img src="images\gho-boy.jpeg" alt="Gho Image" class="product-image">
+            </div>
+            <div class="product-info">
+                <h1>Gho (Men’s Traditional Dress)</h1>
+                <p class="description">Traditional Gho, worn by Bhutanese men. Made from comfortable materials suitable for various occasions, from casual to formal.</p>
+                <h2>Customizations Available</h2>
+                <ul>
+                    <li><strong>Size:</strong> S, M, L, XL</li>
+                    <li><strong>Fabric Type:</strong> Cotton, Wool</li>
+                    <li><strong>Colors:</strong> Dark Blue, Black, Maroon</li>
+                    <li><strong>Embroidery/Design:</strong> Plain or traditional motifs</li>
+                </ul>
+                <h2>Price: BTN 4000 - BTN 10000</h2>
+                <h2>Availability: In Stock</h2>
+                <h3>Quantity:</h3>
+                <input type="number" id="quantity-gho" min="1" value="1">
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 3: Rachu -->
+        <div class="product-item">
+            <div class="product-images">
+                <img src="images\Rachu.jpeg" alt="Rachu Image" class="product-image">
+            </div>
+            <div class="product-info">
+                <h1>Rachu (Women’s Scarf)</h1>
+                <p class="description">Traditional Bhutanese scarf, worn with the Kira for formal and casual occasions. Available in various colors and elegant patterns.</p>
+                <h2>Customizations Available</h2>
+                <ul>
+                    <li><strong>Size:</strong> One Size</li>
+                    <li><strong>Fabric Type:</strong> Silk, Wool</li>
+                    <li><strong>Colors:</strong> Red, Green, Yellow, Blue</li>
+                    <li><strong>Design:</strong> Traditional Bhutanese weaving</li>
+                </ul>
+                <h2>Price: BTN 1500 - BTN 3000</h2>
+                <h2>Availability: In Stock</h2>
+                <h3>Quantity:</h3>
+                <input type="number" id="quantity-rachu" min="1" value="1">
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 4: Yethra Jacket -->
+        <div class="product-item">
+            <div class="product-images">
+                <img src="images\Yathra.jacket.jpeg" alt="Yethra Jacket Image" class="product-image">
+            </div>
+            <div class="product-info">
+                <h1>Yethra Jacket (Traditional Outerwear)</h1>
+                <p class="description">Warm and stylish outerwear, traditionally worn with the Gho or Kira. Available in elegant designs for colder climates.</p>
+                <h2>Customizations Available</h2>
+                <ul>
+                    <li><strong>Size:</strong> S, M, L</li>
+                    <li><strong>Fabric Type:</strong> Wool, Silk</li>
+                    <li><strong>Colors:</strong> Maroon, Brown, Grey</li>
+                </ul>
+                <h2>Price: BTN 3500 - BTN 8000</h2>
+                <h2>Availability: In Stock</h2>
+                <h3>Quantity:</h3>
+                <input type="number" id="quantity-yethra" min="1" value="1">
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 5: Boots -->
+        <div class="product-item">
+            <div class="product-images">
+                <img src="images\Boots.jpeg" alt="Boots Image" class="product-image">
+            </div>
+            <div class="product-info">
+                <h1>Traditional Bhutanese Boots</h1>
+                <p class="description">Handmade boots designed to complement traditional attire. Available in various sizes and colors for both men and women.</p>
+                <h2>Customizations Available</h2>
+                <ul>
+                    <li><strong>Size:</strong> 38, 39, 40, 41, 42</li>
+                    <li><strong>Color:</strong> Brown, Black, Tan</li>
+                </ul>
+                <h2>Price: BTN 2000 - BTN 5000</h2>
+                <h2>Availability: In Stock</h2>
+                <h3>Quantity:</h3>
+                <input type="number" id="quantity-boots" min="1" value="1">
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Product 6: Bags -->
+        <div class="product-item">
+            <div class="product-images">
+                <img src="images/Bag.jpeg" alt="Bags Image" class="product-image">
+            </div>
+            <div class="product-info">
+                <h1>Traditional Bhutanese Bags</h1>
+                <p class="description">Handcrafted bags made from traditional Bhutanese materials, perfect for carrying your daily essentials with style.</p>
+                <h2>Customizations Available</h2>
+                <ul>
+                    <li><strong>Size:</strong> Small, Medium, Large</li>
+                    <li><strong>Fabric Type:</strong> Cotton, Wool, Silk</li>
+                    <li><strong>Colors:</strong> Black, Brown, Red</li>
+                </ul>
+                <h2>Price: BTN 1000 - BTN 3000</h2>
+                <h2>Availability: In Stock</h2>
+                <h3>Quantity:</h3>
+                <input type="number" id="quantity-bags" min="1" value="1">
+                <button class="add-to-cart-btn">Add to Cart</button>
+                
+                </div>
+                
+            </div>
+        </div>
+        
+
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Bhutanese Online Shopping</p>
+    </footer>
 </body>
 </html>
